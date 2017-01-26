@@ -1,0 +1,55 @@
+[
+    {
+        "brand": "Mazda",
+        "model": "2 1.5L M/T",
+        "price": 768000,
+        "horsepower": 106,
+        "grams": 125000,
+        "manual": true
+    },
+    
+    {
+        "brand": "Mazda",
+        "model": "3 2.0L M/T",
+        "price": 850000,
+        "horsepower": 155,
+        "grams": 1540357,
+        "manual": true
+    },
+    
+    {
+        "brand": "Ford",
+        "model": "Ranger 3.2L M/T",
+        "price": 1200000,
+        "horsepower": 470,
+        "grams": 1650000,
+        "manual": true
+    },
+    
+    {
+        "brand": "Ford",
+        "model": "Mustang V6",
+        "price": 850000,
+        "horsepower": 300,
+        "grams": 1780000,
+        "manual": true
+    },
+    
+    {
+        "brand": "Chevrolet",
+        "model": "Corvette ZR1",
+        "price": 2652692,
+        "horsepower": 460,
+        "grams": 1650000,
+        "manual": true
+    },
+    
+    {
+        "brand": "Chevrolet",
+        "model": "Camaro",
+        "price": 1119587,
+        "horsepower": 323,
+        "grams": 1678292,
+        "manual": true
+    }
+]
