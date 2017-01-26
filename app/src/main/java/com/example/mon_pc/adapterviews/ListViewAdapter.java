@@ -18,9 +18,7 @@ import java.util.List;
  */
 
 public class ListViewAdapter extends BaseAdapter {
-    private Context mContext;
-    private LayoutInflater mInflater;
-    private ArrayList<Car> Source;
+
     protected List<Car> cars;
 
     public ListViewAdapter(List<Car> cars) {

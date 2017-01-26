@@ -19,7 +19,7 @@ import java.util.List;
  * Created by MON-PC on 25/01/2017.
  */
 
-public class RecycleViewAdapter extends android.support.v7.widget.RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
+public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
     protected List<Car> cars;
@@ -45,6 +45,7 @@ public class RecycleViewAdapter extends android.support.v7.widget.RecyclerView.A
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
           Log.d("BINDING", "CALL RECYCLEROW");
+            Log.d("SIZE", String.valueOf(cars.size()));
 //        Context context = parent.getContext();
 //        inflater = LayoutInflater.from(context);
 //        View view = inflater.inflate(R.layout.recyclerow, parent, false);
@@ -65,7 +66,8 @@ public class RecycleViewAdapter extends android.support.v7.widget.RecyclerView.A
 
     @Override
     public int getItemCount() {
-        return 0;
+        Log.d("SIZE", String.valueOf(cars.size()));
+        return cars.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

@@ -42,8 +42,9 @@ public class RecyclerViewFragment extends Fragment {
         //this.carsAdapter.onCreateViewHolder()
         //Log.d("TEST", "AAAAAAAA");
         RecyclerView carsLV = (RecyclerView) view.findViewById(R.id.recyclecars);
-        //carsLV.hasFixedSize(true);
+        carsLV.setHasFixedSize(true);
         carsLV.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));
+        carsLV.addItemDecoration(new SpacingDecoration(this.getActivity(), 5, SpacingDecoration.POLICY_INCLUDE_EDGES_ALL));
         carsLV.setAdapter(this.carsAdapter);
         return view;
     }
