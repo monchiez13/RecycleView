@@ -14,6 +14,7 @@ public class Car implements Parcelable {
     public String model;
     public String color;
     public String type;
+    public String img;
 //    String json;
 //    StringBuilder builder;
     //json = builder.toString();
