@@ -9,13 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.ListViewActivity">
+        </activity>
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>

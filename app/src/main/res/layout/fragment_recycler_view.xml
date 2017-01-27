@@ -1,14 +1,21 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mon_pc.adapterviews.RecyclerViewFragment">
+    tools:context="com.example.mon_pc.adapterviews.fragments.RecyclerViewFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:id="@+id/search_bar"
+        android:layout_height="50dp">
+    </android.support.v7.widget.SearchView>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="442dp"
+        android:layout_alignParentBottom="true"
         android:scrollbars="vertical"
         android:id="@+id/recyclecars"/>
-    </FrameLayout>
+    </RelativeLayout>

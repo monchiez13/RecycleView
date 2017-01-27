@@ -1,6 +1,7 @@
 package com.example.mon_pc.adapterviews;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.*;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
@@ -23,12 +24,32 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     private LayoutInflater inflater;
     protected List<Car> cars;
+    protected List<Car> carscpy;
+    protected List<Listener> listeners;
 
 
     public RecycleViewAdapter(Context context, List<Car> cars) {
         inflater = LayoutInflater.from(context);
         this.cars = cars;
+        this.carscpy = cars;
+        listeners = new ArrayList<>();
     }
+
+    public void filter(String text) {
+        cars.clear();
+        if(text.isEmpty()){
+            cars.addAll(carscpy);
+        } else{
+            text = text.toLowerCase();
+            for(Car item: carscpy ){
+                if(item.brand.toLowerCase().contains(text) || item.model.toLowerCase().contains(text)){
+                    cars.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 
 
     public RecycleViewAdapter(List<Car> cars) {
@@ -36,8 +57,13 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         if (cars ==null) {
             Log.d("ArrayAdapter","NULL CARS");
             cars = new ArrayList<>();
+
+
         }
+        carscpy = new ArrayList<>();
         this.cars = cars;
+        carscpy.addAll(this.cars);
+        listeners = new ArrayList<>();
         Log.d("ArrayAdapter","ArrayAdapter");
     }
 
@@ -56,8 +82,18 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     }
 
+    public void addListener(Listener listener) {
+        this.listeners.add(listener);
+    }
+
+    protected void fireSelectionEvent(View view) {
+        for (Listener listener : this.listeners)
+            listener.onItemSelected(view);
+    }
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        Resources res = holder.itemView.getResources();
         Car car = cars.get(position);
         holder.brand.setText(car.brand);
         holder.model.setText(car.model);
@@ -70,17 +106,29 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         return cars.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView brand,model;
 
         protected RecycleViewAdapter adapter;
-        public MyViewHolder(RecycleViewAdapter adapter,View itemView) {
-            super(itemView);
+        public MyViewHolder(RecycleViewAdapter adapter, View item) {
+            super(item);
 
-            this.brand = (TextView) itemView.findViewById(R.id.txtBrand);
-            this.model = (TextView) itemView.findViewById(R.id.txtModel);
+            this.brand = (TextView) item.findViewById(R.id.txtBrand);
+            this.model = (TextView) item.findViewById(R.id.txtModel);
             this.adapter = adapter;
 
+            //this.adapter = adapter;
+
+            item.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            this.adapter.fireSelectionEvent(this.itemView);
+        }
+    }
+
+    public interface Listener {
+        void onItemSelected(View view);
     }
 }

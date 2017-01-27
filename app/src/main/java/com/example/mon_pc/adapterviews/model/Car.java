@@ -31,6 +31,7 @@ public class Car implements Parcelable {
     public Car(JSONObject json) {
         this.fromJSON(json);
     }
+
     protected Car(Parcel in) {
         brand = in.readString();
         model = in.readString();
